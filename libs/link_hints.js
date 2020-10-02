@@ -2,7 +2,7 @@ class LinkHints {
   constructor() {
     this.active = false;
     this.selectedLink = '';
-    this.timer;
+    this.timer = 0;
   }
 
   show() {
@@ -58,7 +58,7 @@ class LinkHints {
     this.active = false;
   }
 
-  isVisible() {
+  isVisible(el) {
     const computedStyle = window.getComputedStyle(el, null);
     return computedStyle.getPropertyValue('visibility') === 'visible'
       && !(el.offsetParent === null);

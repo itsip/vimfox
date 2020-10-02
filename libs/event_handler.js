@@ -5,7 +5,7 @@ class EventHandler {
     this.linkHints = new LinkHints();
   }
 
-  start() {
+  run() {
     this.addKeydown();
     this.addKeyup();
     this.addScroll();
@@ -13,37 +13,38 @@ class EventHandler {
 
   addKeydown() {
     document.addEventListener('keydown', function(e) {
-      switch (e) {
+      switch (e.key) {
         case 'f':
-          if (!linkHints.active) {
-            linkHints.show();
+          if (!this.linkHints.active) {
+            this.linkHints.show();
           } else {
-            linkHints.clear();
+            this.linkHints.clear();
           }
           break;
       }
-    });
+    }.bind(this));
   }
 
   addKeyup() {
     document.addEventListener('keyup', function(e) {
-      if (linkHints.active && e.key !== 'f') {
-        clearTimeout(linksHints.timer);
-        console.log(e.key);
-        linkHints.selectedLink += e.key;
-        linkHints.timer = setTimeout(function() {
-          const href = document.getElementsByClassName('vimfox-link-' + selectedLink)[0].href;
-          linkHints.clear();
+      if (this.linkHints.active && e.key !== 'f') {
+        clearTimeout(this.linkHints.timer);
+        this.linkHints.selectedLink += e.key;
+        this.linkHints.timer = setTimeout(function() {
+          const href = document.getElementsByClassName('vimfox-link-' + this.linkHints.selectedLink)[0].href;
+          this.linkHints.clear();
           window.open(href, '_self');
-        }, 500);
+        }.bind(this), 500);
       }
-    });
+    }.bind(this));
   }
 
   addScroll() {
     window.addEventListener('scroll', function() {
-      clearLinks();
-    });
+      if (this.linkHints.active) {
+        this.linkHints.clear();
+      }
+    }.bind(this));
   }
 }
 
