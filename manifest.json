@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "vim-basic",
+  "name": "vimfox",
   "version": "1.0",
   "description": "Adds basic vim-like features to browser",
   "icons": {},
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["vim-basic.js"]
+      "js": ["index.js"]
     }
   ]
 }
