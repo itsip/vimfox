@@ -4,7 +4,7 @@
   "description": "",
   "main": "vim-basic.js",
   "scripts": {
-    "build": "webpack --config config/webpack.prod.js"
+    "dev": "webpack --config config/webpack.dev.js"
   },
   "repository": {
     "type": "git",
