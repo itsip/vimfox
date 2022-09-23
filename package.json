@@ -2,7 +2,7 @@
   "name": "vimfox",
   "version": "1.0.0",
   "description": "",
-  "main": "vim-basic.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack"
   },
