@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "postbuild": "cp ./manifest.json ./dist/manifest.json"
   },
   "repository": {
     "type": "git",
